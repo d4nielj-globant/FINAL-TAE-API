@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: POC Example - Put actions
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.679 s - in POC Example - Put actions
