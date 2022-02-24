@@ -1,8 +1,0 @@
-"Story","Title","Result","Date","Stability","Duration (s)"
-"POC Example - Put actions","Create a new user based on body request","SUCCESS","2022-02-09T18:39:34.889663-05:00[America/Bogota]","0.0","4.11"
-"POC Example - Put actions","Create a new user based on JSON file (resource)","SUCCESS","2022-02-09T18:39:39.01345-05:00[America/Bogota]","0.0","0.34"
-"POC Example - Get actions","Testing an Endpoint - Get action using JSON resource","SUCCESS","2022-02-09T18:39:39.372757-05:00[America/Bogota]","0.0","0.38"
-"POC Example - Get actions","Testing an Endpoint - Get action using string parameter","SUCCESS","2022-02-09T18:39:39.75495-05:00[America/Bogota]","0.0","0.36"
-"POC Example - Get actions","Testing an Endpoint - Get action using string parameter by resource","SUCCESS","2022-02-09T18:39:40.138327-05:00[America/Bogota]","0.0","0.33"
-"POC Example - Get actions","Testing an Endpoint - Get action using example table","SUCCESS","2022-02-09T18:39:40.480616-05:00[America/Bogota]","0.0","0.94"
-"POC Example - Get actions","Testing an Endpoint - Get action using example table with key","SUCCESS","2022-02-09T18:39:41.422464-05:00[America/Bogota]","0.0","1.04"

@@ -5,6 +5,8 @@ import base.model.User;
 import io.restassured.response.Response;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Step;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 import java.util.Map;
@@ -15,10 +17,21 @@ import java.util.Map;
 public class SubscriptionService {
 
     /**
+     * Logger by Log4j2 declaration and initialization
+     */
+    private static final Logger LOGGER = LogManager.getLogger(SubscriptionService.class);
+
+    /**
      * Constants definitions
      */
     private static final String CONTENT_TYPE = "Content-Type";
     private static final String SUBSCRIPTION_CONTENT_TYPE = "application/json";
+
+    /**
+     * Local variables
+     */
+    private Response response;
+
 
     /**
      * This method send a GET request bases on an endpoint
@@ -38,11 +51,14 @@ public class SubscriptionService {
      */
     @Step("I get the endpoint {string}")
     public void sendGetRequest(String endpoint) {
-        SerenityRest.given()
+        response = SerenityRest.given()
                 .contentType(CONTENT_TYPE)
                 .header(CONTENT_TYPE, SUBSCRIPTION_CONTENT_TYPE)
                 .when()
                 .get(endpoint);
+
+        LOGGER.info("Send GET request --- Time: " + response.getTime() + " -- Status code: " + response.getStatusCode() +
+                " -- Session ID: " + response.getSessionId());
     }
 
     /**
@@ -52,11 +68,14 @@ public class SubscriptionService {
      */
     @Step("I send a POST query to {string} with header {string} and body {string}")
     public void sendPostQuery(String bodyRequest) {
-        System.out.println("THIS IS: " + SerenityRest.given()
+        response = SerenityRest.given()
                 .contentType(CONTENT_TYPE)
                 .header(CONTENT_TYPE, SUBSCRIPTION_CONTENT_TYPE)
                 .body(bodyRequest)
-                .post(new BaseApi().getEndpointByKey("my_endpoint")));
+                .post(new BaseApi().getEndpointByKey("my_endpoint"));
+
+        LOGGER.info("Send POST request --- Time: " + response.getTime() + " -- Status code: " + response.getStatusCode() +
+                " -- Session ID: " + response.getSessionId());
     }
 
     /**
@@ -67,11 +86,14 @@ public class SubscriptionService {
      */
     @Step("I send a POST query using resource with key {key}")
     public void sendPostQueryWithKey(String action, String key) {
-        SerenityRest.given()
+        response = SerenityRest.given()
                 .contentType(CONTENT_TYPE)
                 .header(CONTENT_TYPE, SUBSCRIPTION_CONTENT_TYPE)
                 .body(new BaseApi().createRequestByJsonFile(action, key))
                 .post(new BaseApi().getEndpointByKey("my_endpoint"));
+
+        LOGGER.info("Send POST Query --- Time: " + response.getTime() + " -- Status code: " + response.getStatusCode() +
+                " -- Session ID: " + response.getSessionId());
     }
 
     /**
@@ -81,11 +103,14 @@ public class SubscriptionService {
      */
     @Step("I send a POST query using body")
     public void sendPostQueryWithBody(Object body) {
-        SerenityRest.given()
+        response = SerenityRest.given()
                 .contentType(CONTENT_TYPE)
                 .header(CONTENT_TYPE, SUBSCRIPTION_CONTENT_TYPE)
                 .body(body)
                 .post(new BaseApi().getEndpointByKey("my_endpoint"));
+
+        LOGGER.info("Send POST Query --- Time: " + response.getTime() + " -- Status code: " + response.getStatusCode() +
+                " -- Session ID: " + response.getSessionId());
     }
 
     /**
@@ -96,12 +121,15 @@ public class SubscriptionService {
      */
     @Step("I send a DELETE query by id {int}")
     public Response sendDeleteQueryById(int id) {
-        Response lastResponse;
-        return lastResponse = SerenityRest.given()
+        response = SerenityRest.given()
                 .contentType(CONTENT_TYPE)
                 .header(CONTENT_TYPE, SUBSCRIPTION_CONTENT_TYPE)
                 .when()
                 .delete(new BaseApi().getEndpointByKey("my_endpoint") + "/" + id);
+
+        LOGGER.info("Send DELETE Query --- Time: " + response.getTime() + " -- Status code: " + response.getStatusCode() +
+                " -- Session ID: " + response.getSessionId());
+        return response;
     }
 
     /**
@@ -109,11 +137,14 @@ public class SubscriptionService {
      */
     @Step("I send a DELETE query to {string} with header {string} and body {string}")
     public void sendDeleteQuery(Map<String, String> bodyRequest) {
-        SerenityRest.given()
+        response = SerenityRest.given()
                 .contentType(CONTENT_TYPE)
                 .header(CONTENT_TYPE, SUBSCRIPTION_CONTENT_TYPE)
                 .body(bodyRequest)
                 .delete(new BaseApi().getEndpointByKey("my_endpoint"));
+
+        LOGGER.info("Send DELETE Query --- Time: " + response.getTime() + " -- Status code: " + response.getStatusCode() +
+                " -- Session ID: " + response.getSessionId());
     }
 
     /**
@@ -146,12 +177,16 @@ public class SubscriptionService {
      */
     @Step("I UPDATE User by id using information")
     public Response updateUserById(Object body, int id) {
-        Response response;
-        return response = SerenityRest.given()
+        response = SerenityRest.given()
                 .contentType(CONTENT_TYPE)
                 .header(CONTENT_TYPE, SUBSCRIPTION_CONTENT_TYPE)
                 .body(body)
                 .put(new BaseApi().getEndpointByKey("my_endpoint") + "/" + id);
+
+        LOGGER.info("Send UPDATE Query --- Time: " + response.getTime() + " -- Status code: " + response.getStatusCode() +
+                " -- Session ID: " + response.getSessionId());
+
+        return response;
     }
 
 }
