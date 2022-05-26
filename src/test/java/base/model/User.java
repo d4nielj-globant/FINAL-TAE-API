@@ -17,7 +17,7 @@ public class User {
     public User() {
     }
 
-    //Setters and Getters generated
+    // Setters and Getters generated
 
     public String getUser() {
         return user;

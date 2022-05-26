@@ -32,7 +32,6 @@ public class SubscriptionService {
      */
     private Response response;
 
-
     /**
      * This method send a GET request bases on an endpoint
      * Using get function from SerenityREST
@@ -188,5 +187,4 @@ public class SubscriptionService {
 
         return response;
     }
-
 }

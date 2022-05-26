@@ -4,9 +4,10 @@
 Feature: POC Example - Get actions
 
   # Get request scenario using a implicit endpoint
+  @myScenario
   Scenario: Testing an Endpoint - Get action using JSON resource
     Given I get the response from the endpoint
-    Then I get the response code equals to 200
+    Then I get the response code equals to 400
 
   # Get request scenario using endpoint by parameter
   Scenario: Testing an Endpoint - Get action using string parameter

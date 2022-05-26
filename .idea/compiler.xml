@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="API_TestAutomation" />
+        <module name="DanielJaramillo_RESTAPI_Taller" />
       </profile>
     </annotationProcessing>
   </component>
